@@ -39,7 +39,7 @@ namespace crudManceira
                 for (int i = 0; i < data.types.Length; i++)
                 {
                     string type = data.types[i].type.name;
-                    Console.Write(type + ca" ");
+                    Console.Write(type + " ");
                 }
                 Console.WriteLine(" ");
             } else
