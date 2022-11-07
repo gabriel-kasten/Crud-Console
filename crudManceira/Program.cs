@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Console;
 
 namespace crudManceira
 {
@@ -6,13 +7,18 @@ namespace crudManceira
     {
         static void Main(string[] args)
         {
-            Console.Clear();
+            //Console.Write("Digite o nome de um pokemon: ");
+            //string name = Console.ReadLine();
+            //Pokemon pokemon = new Pokemon();
+            //pokemon.getPokemonData(name);
 
-            Console.Write("Digite o nome de um pokemon: ");
-            string pokemon = Console.ReadLine();
-            Pokemon.getPokemonData(pokemon);
+            string prompt = "Bem vindo à sua Pokedex, o que gostaria de fazer?";
+            string[] options = { "Gotta Catch'Em All", "Pokedex", "Exit"};
 
-            Console.ReadLine();
+            Menu MainMenu = new Menu(prompt, options);
+            MainMenu.DisplayOptions();
+
+            Console.ReadKey(true);   
         }
     }
 }

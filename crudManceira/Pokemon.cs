@@ -1,17 +1,13 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using System;
-using System.Runtime.InteropServices;
+using static System.Console;
 
 namespace crudManceira
 {
     internal class Pokemon
     {
-        public static string getPokemon(string pokemon)
-        {
-            return pokemon;
-        }
-        public static void getPokemonData(string pokemon)
+        public void getPokemonData(string pokemon)
         {
             var client = new RestClient("https://pokeapi.co/api/v2/pokemon/");
             var request = new RestRequest(pokemon);
@@ -22,12 +18,12 @@ namespace crudManceira
                 string rawResponse = response.Content;
                 Rootobject data = JsonConvert.DeserializeObject<Rootobject>(rawResponse);
 
-                Console.WriteLine($"Name: {data.name}");
-                Console.WriteLine($"Id: {data.id}");
-                Console.WriteLine($"Hp: {data.stats[0].base_stat}");
+                WriteLine($"Name: {data.name}");
+                WriteLine($"Id: {data.id}");
+                WriteLine($"Hp: {data.stats[0].base_stat}");
                 getTypes(data);
-                Console.WriteLine($"Attack: {data.stats[1].base_stat}");
-                Console.WriteLine($"Defense: {data.stats[2].base_stat}");
+                WriteLine($"Attack: {data.stats[1].base_stat}");
+                WriteLine($"Defense: {data.stats[2].base_stat}");
             }
         }
 
@@ -35,18 +31,19 @@ namespace crudManceira
         {
             if (data.types.Length > 1)
             {
-                Console.Write($"Types: ");
+                Write($"Types: ");
                 for (int i = 0; i < data.types.Length; i++)
                 {
                     string type = data.types[i].type.name;
                     Console.Write(type + " ");
                 }
-                Console.WriteLine(" ");
-            } else
-            {
-                Console.WriteLine(data.types[0].type.name);
+                WriteLine(" ");
             }
-            
+            else
+            {
+                WriteLine(data.types[0].type.name);
+            }
+
         }
     }
 
