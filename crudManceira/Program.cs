@@ -1,5 +1,4 @@
 ﻿using System;
-using static System.Console;
 
 namespace crudManceira
 {
@@ -13,12 +12,20 @@ namespace crudManceira
             //pokemon.getPokemonData(name);
 
             string prompt = "Bem vindo à sua Pokedex, o que gostaria de fazer?";
-            string[] options = { "Gotta Catch'Em All", "Pokedex", "Exit"};
+            string[] options = { "Gotta Catch'Em All", "Pokedex", "Exit" };
 
             Menu MainMenu = new Menu(prompt, options);
-            MainMenu.DisplayOptions();
+            int selectedIndex = MainMenu.Run();
 
-            Console.ReadKey(true);   
+            switch (selectedIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+            }
+
+            Console.ReadKey(true);
         }
     }
 }
