@@ -79,10 +79,14 @@ namespace crudManceira
             return SelectedIndex;
         }
 
-        Pokemon pokemon = new Pokemon();
         public void StartPokedex()
         {
-            Pokemon.getPokemonData();
+            Clear();
+            Pokemon pokemon = new Pokemon();
+
+            Write("Give the pokemon name: ");
+            string pokemonName = ReadLine();
+            pokemon.getPokemonData(pokemonName);
         }
 
         public void ListPokemons()

@@ -21,13 +21,13 @@ namespace crudManceira
                 WriteLine($"Name: {data.name}");
                 WriteLine($"Id: {data.id}");
                 WriteLine($"Hp: {data.stats[0].base_stat}");
-                getTypes(data);
+                getPokemonElements(data);
                 WriteLine($"Attack: {data.stats[1].base_stat}");
                 WriteLine($"Defense: {data.stats[2].base_stat}");
             }
         }
 
-        public static void getTypes(Rootobject data)
+        private static void getPokemonElements(Rootobject data)
         {
             if (data.types.Length > 1)
             {
@@ -43,7 +43,6 @@ namespace crudManceira
             {
                 WriteLine(data.types[0].type.name);
             }
-
         }
     }
 
