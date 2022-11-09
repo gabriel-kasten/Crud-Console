@@ -57,14 +57,15 @@ namespace crudManceira
                 ConsoleKeyInfo keyInfo = ReadKey(true);
                 keyPressed = keyInfo.Key;
 
-                if(keyPressed == ConsoleKey.UpArrow)
+                if (keyPressed == ConsoleKey.UpArrow)
                 {
                     SelectedIndex--;
                     if (SelectedIndex == -1)
                     {
                         SelectedIndex = Options.Length - 1;
                     }
-                } else if(keyPressed == ConsoleKey.DownArrow)
+                }
+                else if (keyPressed == ConsoleKey.DownArrow)
                 {
                     SelectedIndex++;
                     if (SelectedIndex == Options.Length)
@@ -86,7 +87,15 @@ namespace crudManceira
 
             Write("Give the pokemon name: ");
             string pokemonName = ReadLine();
-            pokemon.getPokemonData(pokemonName);
+            if (pokemonName == "")
+            {
+                Clear();
+                StartPokedex();
+            }
+            else
+            {
+                pokemon.getPokemonData(pokemonName.ToLower());
+            }
         }
 
         public void ListPokemons()
@@ -94,9 +103,9 @@ namespace crudManceira
 
         }
 
-        public void Exit()
+        public bool Exit()
         {
-
+            return false;
         }
     }
 }

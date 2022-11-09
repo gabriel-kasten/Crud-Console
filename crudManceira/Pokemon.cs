@@ -24,6 +24,20 @@ namespace crudManceira
                 getPokemonElements(data);
                 WriteLine($"Attack: {data.stats[1].base_stat}");
                 WriteLine($"Defense: {data.stats[2].base_stat}");
+
+                // gerar opção para salvar pokemon na pokedex e opção para sair da busca
+                // opção de para pesquisar pokemon aleatório?
+                WriteLine("\nDeseja salvar o pokemon na pokedex?");
+                WriteLine("\nSalvar");
+                WriteLine("");
+                WriteLine("Gerar pokemon aleatório");
+                WriteLine("Sair");
+                ReadKey(true);
+            }
+            else
+            {
+                WriteLine("O pokemon não foi encontrado, tente digitar outro ou verifique a caligrafica");
+                System.Threading.Thread.Sleep(3000);
             }
         }
 
