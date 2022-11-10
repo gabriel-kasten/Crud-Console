@@ -27,6 +27,12 @@ namespace crudManceira
                 getPokemonElements(data);
                 WriteLine($"Attack: {data.stats[1].base_stat}");
                 WriteLine($"Defense: {data.stats[2].base_stat}");
+
+                ReadKey(true);
+
+                //string[] pokedex = { "Salvar", "Novo Aleatório", "Sair" };
+                //Menu pokedexMenu = new Menu(pokedex);
+                //pokedexMenu.Run();
             }
             else
             {

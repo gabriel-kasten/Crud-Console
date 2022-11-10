@@ -15,7 +15,7 @@ namespace crudManceira
 
         Pokemon pokemon = new Pokemon();
 
-        public Menu(string prompt = "", string[] options)
+        public Menu(string[] options, string prompt = "")
         {
             this.Prompt = prompt;
             this.Options = options;
