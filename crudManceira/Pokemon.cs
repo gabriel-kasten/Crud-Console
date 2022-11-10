@@ -18,21 +18,15 @@ namespace crudManceira
                 string rawResponse = response.Content;
                 Rootobject data = JsonConvert.DeserializeObject<Rootobject>(rawResponse);
 
-                WriteLine($"Name: {data.name}");
+                string front_default = data.sprites.front_default;
+                PokemonImage.ConvertImg(front_default.ToString());
+
+                WriteLine($"\nName: {data.name}");
                 WriteLine($"Id: {data.id}");
                 WriteLine($"Hp: {data.stats[0].base_stat}");
                 getPokemonElements(data);
                 WriteLine($"Attack: {data.stats[1].base_stat}");
                 WriteLine($"Defense: {data.stats[2].base_stat}");
-
-                // gerar opção para salvar pokemon na pokedex e opção para sair da busca
-                // opção de para pesquisar pokemon aleatório?
-                WriteLine("\nDeseja salvar o pokemon na pokedex?");
-                WriteLine("\nSalvar");
-                WriteLine("");
-                WriteLine("Gerar pokemon aleatório");
-                WriteLine("Sair");
-                ReadKey(true);
             }
             else
             {
@@ -51,11 +45,10 @@ namespace crudManceira
                     string type = data.types[i].type.name;
                     Console.Write(type + " ");
                 }
-                WriteLine(" ");
             }
             else
             {
-                WriteLine(data.types[0].type.name);
+                WriteLine("Type: " + data.types[0].type.name);
             }
         }
     }
@@ -80,18 +73,6 @@ namespace crudManceira
         public string front_shiny { get; set; }
         public string front_shiny_female { get; set; }
     }
-
-    //public class Animated
-    //{
-    //    public string back_default { get; set; }
-    //    public string back_female { get; set; }
-    //    public string back_shiny { get; set; }
-    //    public string back_shiny_female { get; set; }
-    //    public string front_default { get; set; }
-    //    public string front_female { get; set; }
-    //    public string front_shiny { get; set; }
-    //    public string front_shiny_female { get; set; }
-    //}
 
     public class Stat
     {

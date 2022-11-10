@@ -8,20 +8,25 @@
 
             string prompt = "Bem vindo à sua Pokedex, o que gostaria de fazer?\n*use as setas e enter para selecionar*";
             string[] options = { "Gotta Catch'Em All", "Pokedex", "Exit" };
-            Menu menu = new Menu(prompt, options);
+            string[] pokedex = { "Eu escolho você", "Novo Aleatório", "Sair" };
+            Menu mainMenu = new Menu(prompt, options);
             while (run)
             {
-                int selectedIndex = menu.Run();
+                int selectedIndex = mainMenu.Run();
                 switch (selectedIndex)
                 {
                     case 0:
-                        menu.StartPokedex();
+                        mainMenu.StartPokedex();
+
+                        Menu pokedexMenu = new Menu("", pokedex);
+                        pokedexMenu.Run();
+
                         break;
                     case 1:
 
                         break;
                     case 2:
-                        run = menu.Exit();
+                        run = mainMenu.Exit();
                         break;
                 }
             }

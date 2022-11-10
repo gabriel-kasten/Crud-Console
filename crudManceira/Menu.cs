@@ -13,7 +13,9 @@ namespace crudManceira
         private string[] Options;
         private string Prompt;
 
-        public Menu(string prompt, string[] options)
+        Pokemon pokemon = new Pokemon();
+
+        public Menu(string prompt = "", string[] options)
         {
             this.Prompt = prompt;
             this.Options = options;
@@ -83,18 +85,16 @@ namespace crudManceira
         public void StartPokedex()
         {
             Clear();
-            Pokemon pokemon = new Pokemon();
-
             Write("Give the pokemon name: ");
-            string pokemonName = ReadLine();
-            if (pokemonName == "")
+            string _pokemon = ReadLine();
+            if (_pokemon == "")
             {
                 Clear();
                 StartPokedex();
             }
             else
             {
-                pokemon.getPokemonData(pokemonName.ToLower());
+                pokemon.getPokemonData(_pokemon.ToLower());
             }
         }
 
@@ -106,6 +106,11 @@ namespace crudManceira
         public bool Exit()
         {
             return false;
+        }
+
+        public void SavePokemon()
+        {
+
         }
     }
 }

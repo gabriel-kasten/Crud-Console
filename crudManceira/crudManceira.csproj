@@ -81,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
-    <Compile Include="Image.cs" />
+    <Compile Include="PokemonImage.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Pokemon.cs" />
     <Compile Include="Program.cs" />
