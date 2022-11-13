@@ -76,7 +76,6 @@ namespace crudManceira
                     }
                 }
 
-
             } while (keyPressed != ConsoleKey.Enter);
 
             return SelectedIndex;
@@ -87,14 +86,20 @@ namespace crudManceira
             Clear();
             Write("Give the pokemon name: ");
             string _pokemon = ReadLine();
+            _pokemon.ToLower();
             if (_pokemon == "")
             {
                 Clear();
                 StartPokedex();
             }
+            else if (_pokemon == "manceira")
+            {
+                Clear();
+                pokemon.getManceiramon();
+            }
             else
             {
-                pokemon.getPokemonData(_pokemon.ToLower());
+                pokemon.getPokemonData(_pokemon);
             }
         }
 
