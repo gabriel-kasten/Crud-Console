@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
 
 namespace crudManceira
@@ -12,8 +8,6 @@ namespace crudManceira
         private int SelectedIndex;
         private string[] Options;
         private string Prompt;
-
-        Pokemon pokemon = new Pokemon();
 
         public Menu(string[] options, string prompt = "")
         {
@@ -32,7 +26,7 @@ namespace crudManceira
 
                 if (i == SelectedIndex)
                 {
-                    prefix = ">";
+                    prefix = " > ";
                     ForegroundColor = ConsoleColor.Black;
                     BackgroundColor = ConsoleColor.White;
                 }
@@ -75,14 +69,13 @@ namespace crudManceira
                         SelectedIndex = 0;
                     }
                 }
-
             } while (keyPressed != ConsoleKey.Enter);
-
             return SelectedIndex;
         }
-
-        public void StartPokedex()
+        Database db = new Database();
+        public void SearchPokemon()
         {
+            PokemonMenu pokedex = new PokemonMenu();
             Clear();
             Write("Give the pokemon name: ");
             string _pokemon = ReadLine();
@@ -90,32 +83,26 @@ namespace crudManceira
             if (_pokemon == "")
             {
                 Clear();
-                StartPokedex();
+                WriteLine("Digite o nome de algum pokemon.");
+                System.Threading.Thread.Sleep(3000);
             }
             else if (_pokemon == "manceira")
             {
                 Clear();
-                pokemon.getManceiramon();
+                pokedex.displayManceiramon();
             }
             else
             {
-                pokemon.getPokemonData(_pokemon);
+                Rootobject pokemonData = db.getPokemonInfo(_pokemon);
+                if (pokemonData == null)
+                {
+                    WriteLine("Erro");
+                }
+                else
+                {
+                    pokedex.displayPokemonInfo(pokemonData);
+                }
             }
-        }
-
-        public void ListPokemons()
-        {
-
-        }
-
-        public bool Exit()
-        {
-            return false;
-        }
-
-        public void SavePokemon()
-        {
-
         }
     }
 }

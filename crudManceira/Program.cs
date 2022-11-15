@@ -4,24 +4,27 @@
     {
         static void Main(string[] args)
         {
-            bool run = true;
-
             string prompt = "Bem vindo à sua Pokedex, o que gostaria de fazer?\n*use as setas e enter para selecionar*";
             string[] options = { "Gotta Catch'Em All", "Pokedex", "Sair" };
+
+            bool run = true;
+
             Menu mainMenu = new Menu(options, prompt);
+            Database db = new Database();
+
             while (run)
             {
                 int selectedIndex = mainMenu.Run();
                 switch (selectedIndex)
                 {
                     case 0:
-                        mainMenu.StartPokedex();
+                        mainMenu.SearchPokemon();
                         break;
                     case 1:
-
+                        db.getAllPokemons();
                         break;
                     case 2:
-                        run = mainMenu.Exit();
+                        run = false;
                         break;
                 }
             }
