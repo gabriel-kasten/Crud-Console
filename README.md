@@ -1,1 +1,1 @@
-# crudManceira
+Trabalho da faculdade onde se deve criar um crud cujo tema é definido pelo aluno, essa é a versão completa usando de uma api e conversor de imagens para ASCII. IDE usada é o visual studio da microsoft
